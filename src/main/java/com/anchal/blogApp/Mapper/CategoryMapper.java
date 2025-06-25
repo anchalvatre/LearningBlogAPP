@@ -1,6 +1,7 @@
 package com.anchal.blogApp.Mapper;
 
 import com.anchal.blogApp.Model.DTO.CategoryDto;
+import com.anchal.blogApp.Model.DTO.CreateCategoryDto;
 import com.anchal.blogApp.Model.Entities.Category;
 import com.anchal.blogApp.Model.Entities.Post;
 import com.anchal.blogApp.Model.PostStatus;
@@ -16,6 +17,8 @@ public interface CategoryMapper {
 
     @Mapping(source = "posts", target = "postCount", qualifiedByName = "convertPostsToPostCount")
     CategoryDto toDto(Category category);
+
+    Category toEntity(CreateCategoryDto createCategoryDto);
 
     @Named("convertPostsToPostCount")
     default long convertPostsToPostCount(List<Post> posts){

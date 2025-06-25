@@ -13,4 +13,6 @@ public interface CategoryRepo extends JpaRepository<Category, UUID> {
 
     @Query("Select c FROM Category c LEFT JOIN FETCH c.posts")
     List<Category> findAllByPostCount();
+
+    boolean existsByNameIgnoreCase(String categoryName);
 }
