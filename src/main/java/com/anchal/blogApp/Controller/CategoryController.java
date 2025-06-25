@@ -2,7 +2,6 @@ package com.anchal.blogApp.Controller;
 
 import com.anchal.blogApp.Mapper.CategoryMapper;
 import com.anchal.blogApp.Model.DTO.CategoryDto;
-import com.anchal.blogApp.Model.Entities.Category;
 import com.anchal.blogApp.Service.Impl.CategoryServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
