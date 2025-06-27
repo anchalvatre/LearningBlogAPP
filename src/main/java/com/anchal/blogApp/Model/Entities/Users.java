@@ -17,7 +17,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "users")
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -38,10 +38,10 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(email, user.email) &&
-                Objects.equals(password, user.password) && Objects.equals(userName, user.userName)
-                && Objects.equals(createdDate, user.createdDate) && Objects.equals(updatedDate, user.updatedDate);
+        Users users = (Users) o;
+        return Objects.equals(id, users.id) && Objects.equals(email, users.email) &&
+                Objects.equals(password, users.password) && Objects.equals(userName, users.userName)
+                && Objects.equals(createdDate, users.createdDate) && Objects.equals(updatedDate, users.updatedDate);
     }
 
     @Override
