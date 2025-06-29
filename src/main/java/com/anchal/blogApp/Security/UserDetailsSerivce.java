@@ -20,13 +20,27 @@ public class UserDetailsSerivce implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String emailOrUserName) throws UsernameNotFoundException {
 
-        Users users = userService.findByEmail(email).orElseThrow(() -> new InternalAuthenticationServiceException("Usersdfdf not Found"));
-        return User.builder().
-                username(users.getEmail()).
-                password(users.getPassword()).
-                build();
+        if (!userService.findByEmail(emailOrUserName).isEmpty()) {
+            Users users = userService.findByEmail(emailOrUserName)
+                    .orElseThrow(() -> new UsernameNotFoundException("Email not Found : " + emailOrUserName));
+            return User.builder().
+                    username(users.getEmail()).
+                    password(users.getPassword()).
+                    build();
+        }
+
+        if(!userService.findByUserName(emailOrUserName).isEmpty()){
+            return userService.findByUserName(emailOrUserName).map(user -> {
+                return User.builder()
+                        .username(user.getUserName())
+                        .password(user.getPassword())
+                        .build();
+            }).orElseThrow(()  -> new UsernameNotFoundException("UserName not found : " + emailOrUserName ));
+        }
+
+        throw new UsernameNotFoundException("User or email not found " + emailOrUserName);
 
     }
 }

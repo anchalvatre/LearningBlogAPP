@@ -47,8 +47,8 @@ public class ErrorController {
         return new ResponseEntity<>(apiErrorResponse, HttpStatus.CONFLICT);
     }
 
-    @ExceptionHandler(InternalAuthenticationServiceException.class)
-    public ResponseEntity<APIErrorResponse> handleInternalAuthenticationServiceException(InternalAuthenticationServiceException e) {
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<APIErrorResponse> handleInternalAuthenticationServiceException(BadCredentialsException e) {
         log.error(e.getMessage() + "insise bad creatinals ");
         APIErrorResponse apiErrorResponse = APIErrorResponse.builder().
                 status(HttpStatus.UNAUTHORIZED.value()).
