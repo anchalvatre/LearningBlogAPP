@@ -22,7 +22,7 @@ public class Tag {
     @Column(nullable = false, unique = true)
     private String name;
     @ManyToMany(mappedBy = "tags")
-    private Set<Post> postSet = new HashSet<>();
+    private Set<Post> posts = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

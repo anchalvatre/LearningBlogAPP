@@ -8,4 +8,6 @@ import java.util.UUID;
 
 @Repository
 public interface TagRepo extends JpaRepository<Tag, UUID> {
+
+    boolean existsByNameIgnoreCase(String name);
 }

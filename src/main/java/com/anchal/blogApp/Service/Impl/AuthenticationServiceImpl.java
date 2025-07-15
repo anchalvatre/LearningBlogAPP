@@ -28,6 +28,7 @@ import java.util.*;
 @Slf4j
 public class AuthenticationServiceImpl implements AuthenticationService {
 
+   // @Value("${jwt.secret}")
     @Value("${jwt.secret}")
     private String secertKey;
     private final AuthenticationManager authenticationManager;

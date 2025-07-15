@@ -17,7 +17,7 @@ public class APIErrorResponse {
     private String message;
     List<FieldError> errors;
 
-    public class FieldError{
+    public static class FieldError{
         private String field;
         private String message;
     }

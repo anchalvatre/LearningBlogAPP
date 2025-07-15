@@ -29,7 +29,7 @@ public class AuthController {
         //TODO - first try with authentication with email and password only by pssing hardcoded string and then try jwt
         AuthResponse authResponse = AuthResponse.builder().
                 token(jwt).
-                expireIn(1000).
+                expireIn(5000).
                 build();
 
         return ResponseEntity.ok(authResponse);
